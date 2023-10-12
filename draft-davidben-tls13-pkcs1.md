@@ -59,7 +59,8 @@ informative:
 --- abstract
 
 This document allocates code points for the use of RSASSA-PKCS1-v1\_5 with
-client certificates in TLS 1.3.
+client certificates in TLS 1.3. This removes an obstacle for some deployments
+to migrate to TLS 1.3.
 
 --- middle
 
@@ -68,11 +69,19 @@ client certificates in TLS 1.3.
 TLS 1.3 {{RFC8446}} removed support for RSASSA-PKCS1-v1\_5 {{RFC8017}} in
 CertificateVerify messages in favor of RSASSA-PSS. While RSASSA-PSS is a
 long-established signature algorithm, some legacy hardware cryptographic devices
-lack support for it. Due to performance requirements, such devices are uncommon
-in TLS servers, but are sometimes used by TLS clients for client certificates.
+lack support for it. While uncommon in TLS servers, these devices are sometimes
+used by TLS clients for client certificates.
+
+TLS connections that rely on such devices cannot migrate to TLS 1.3. Staying on
+TLS 1.2 leaks the client certificate to network attackers and additionally
+prevents such deployments from protecting traffic against retroactive
+decryption by an attacker with a quantum computer.
+
 Moreover, TLS negotiates the protocol version before client certificates, so
-this limitation can further impact adjacent connections that do not use affected
-keys.
+clients and servers cannot smoothly transition unaffected connections to
+TLS 1.3. As a result, this issue is not limited to individual connections
+that use affected devices. It prevents entire deployments from migrating to
+TLS 1.3. See {{security-considerations}} for further discussion.
 
 This document allocates code points to use these legacy keys with client
 certificates in TLS 1.3.
@@ -127,27 +136,32 @@ Prior to this document, legacy RSA keys would prevent client certificate
 deployments from adopting TLS 1.3. The new code points allow such deployments
 to upgrade without replacing the keys. TLS 1.3 fixes a privacy flaw
 {{?PRIVACY=DOI.10.23919/TMA.2017.8002897}} with client certificates, so
-upgrading is a particular benefit to these deployments.
+upgrading is a particular benefit to these deployments. TLS 1.3 is also a
+prequisite for post-quantum key exchanges {{?I-D.ietf-tls-hybrid-design}},
+necessary for deployments to protect traffic against retroactive decryption by
+an attacker with a quantum computer.
 
-Additionally, TLS negotiates protocol versions before client certificates. When
-sending a ClientHello, a TLS-1.3-capable client cannot determine if the server
-will request a legacy key. It may then offer TLS 1.3, to upgrade connections to
-other servers. A TLS-1.3-capable server that requests client certificates cannot
-then distinguish such a client from one with modern keys. It may then negotiate
-TLS 1.3 and send a CertificateRequest. The connection would then fail due to the
-legacy key, when it previously succeeded at TLS 1.2.
+Additionally, TLS negotiates protocol versions before client certificates.
+Clients send ClientHellos without knowing whether the server will request to
+authenticate with legacy keys. Conversely, servers respond with a TLS
+version and CertificateRequest without knowing if the client will then
+respond with a legacy key. If the client and server, respectively, offer and
+negotiate TLS 1.3, the connection will fail due to the legacy key, when it
+previously succeeded at TLS 1.2.
 
 To recover from this failure, one side must globally disable TLS 1.3 or the
 client must implement an external fallback. Disabling TLS 1.3 impacts
 connections that would otherwise be unaffected by this issue, while external
 fallbacks break TLS's security analysis and may introduce vulnerabilities
 {{POODLE}}. The new code points reduce the pressure on implementations to select
-one of these mitigations.
+one of these problematic mitigations and unblocks TLS 1.3 deployment.
 
-However, the new code points also reduce the pressure on implementations to
-migrate to RSASSA-PSS. The above considerations do not apply to server keys, so
-these new code points are forbidden for use with server certificates. RSASSA-PSS
-continues to be required for TLS 1.3 servers using RSA keys.
+At the same time, the new code points also reduce the pressure on
+implementations to migrate to RSASSA-PSS. The above considerations do not apply
+to server keys, so these new code points are forbidden for use with server
+certificates. RSASSA-PSS continues to be required for TLS 1.3 servers using RSA
+keys. This minimizes the impact to only those cases necessary to unblock TLS
+1.3 deployment.
 
 Finally, when implemented incorrectly, RSASSA-PKCS1-v1\_5 admits signature
 forgeries {{MFSA201473}}. Implementations  producing or verifying signatures
