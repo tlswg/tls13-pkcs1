@@ -102,15 +102,15 @@ The above code points indicate a signature algorithm using RSASSA-PKCS1-v1\_5
 the client CertificateVerify message and are not defined for use in other
 contexts. In particular, servers intending to advertise support for
 RSASSA-PKCS1-v1\_5 signatures in the certificates themselves should use the
-rsa\_pkcs1\_\* constants defined in {{RFC8446}}.
+`rsa_pkcs1_*` constants defined in {{RFC8446}}.
 
-Clients MUST NOT advertise these values in the "signature\_algorithms" extension
+Clients MUST NOT advertise these values in the `signature_algorithms` extension
 of the ClientHello. They MUST NOT accept these values in the server
 CertificateVerify message.
 
 Servers that wish to support clients authenticating with legacy
 RSASSA-PKCS1-v1\_5-only keys MAY send these values in the
-"signature\_algorithms" extension of the CertificateRequest message and accept
+`signature_algorithms` extension of the CertificateRequest message and accept
 them in the client CertificateVerify message. Servers MUST NOT accept these code
 points if not offered in the CertificateRequest message.
 
@@ -165,9 +165,9 @@ should be set to "N", and the "Reference" column should be set to this document.
 
 | Value  |  Description                       |
 |--------|------------------------------------|
-| 0x0420 | rsa\_pkcs1\_sha256\_legacy |
-| 0x0520 | rsa\_pkcs1\_sha384\_legacy |
-| 0x0620 | rsa\_pkcs1\_sha512\_legacy |
+| 0x0420 | `rsa_pkcs1_sha256_legacy` |
+| 0x0520 | `rsa_pkcs1_sha384_legacy` |
+| 0x0620 | `rsa_pkcs1_sha512_legacy` |
 
 
 --- back
