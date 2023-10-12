@@ -90,9 +90,9 @@ The following SignatureScheme values are defined for use with TLS 1.3.
 
 ~~~~
     enum {
-        rsa_pkcs1_sha256_legacy(TBD1),
-        rsa_pkcs1_sha384_legacy(TBD2),
-        rsa_pkcs1_sha512_legacy(TBD3),
+        rsa_pkcs1_sha256_legacy(0x0420),
+        rsa_pkcs1_sha384_legacy(0x0520),
+        rsa_pkcs1_sha512_legacy(0x0620),
     } SignatureScheme;
 ~~~~
 
@@ -163,11 +163,11 @@ IANA is requested to create the following entries in the
 TLS SignatureScheme registry, defined in {{!RFC8446}}. The "Recommended" column
 should be set to "N", and the "Reference" column should be set to this document.
 
-| Value |  Description                       |
-|-------|------------------------------------|
-| TBD1  | rsa\_pkcs1\_sha256\_legacy |
-| TBD2  | rsa\_pkcs1\_sha384\_legacy |
-| TBD3  | rsa\_pkcs1\_sha512\_legacy |
+| Value  |  Description                       |
+|--------|------------------------------------|
+| 0x0420 | rsa\_pkcs1\_sha256\_legacy |
+| 0x0520 | rsa\_pkcs1\_sha384\_legacy |
+| 0x0620 | rsa\_pkcs1\_sha512\_legacy |
 
 
 --- back
