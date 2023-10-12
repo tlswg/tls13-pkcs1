@@ -111,9 +111,14 @@ CertificateVerify message.
 Servers that wish to support clients authenticating with legacy
 RSASSA-PKCS1-v1\_5-only keys MAY send these values in the
 "signature\_algorithms" extension of the CertificateRequest message and accept
-them in the client CertificateVerify message. Clients with such legacy keys MAY
-negotiate the use of these signature algorithms if offered by the server.
-Clients SHOULD NOT negotiate them with keys that support RSASSA-PSS.
+them in the client CertificateVerify message. Servers MUST NOT accept these code
+points if not offered in the CertificateRequest message.
+
+Clients with such legacy keys MAY negotiate the use of these signature
+algorithms if offered by the server.  Clients SHOULD NOT negotiate them with
+keys that support RSASSA-PSS.
+
+TLS implementations SHOULD disable these code points by default.
 
 
 # Security Considerations
