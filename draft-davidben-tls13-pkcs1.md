@@ -25,6 +25,11 @@ author:
     name: "David Benjamin"
     organization: "Google LLC"
     email: davidben@google.com
+ -
+    ins: "A. Popov"
+    name: "Andrei Popov"
+    organization: "Microsoft Corp."
+    email: andreipo@microsoft.com
 
 normative:
   RFC2119:
@@ -37,6 +42,18 @@ normative:
       org: ITU-T
     seriesinfo:
       ISO/IEC: 8825-1:2002
+  TPM12:
+    title: "TPM Main Specification Level 2 Version 1.2, Revision 116, Part 2 - Structures of the TPM"
+    date: 2011-03-01
+    author:
+      org: Trusted Computing Group
+    target: https://trustedcomputinggroup.org/wp-content/uploads/TPM-Main-Part-2-TPM-Structures_v1.2_rev116_01032011.pdf
+  TPM2:
+    title: "Trusted Platform Module Library Specification, Family 2.0, Level 00, Revision 01.59, Part 1: Architecture"
+    date: 2019-11-08
+    author:
+      org: Trusted Computing Group
+    target: https://trustedcomputinggroup.org/wp-content/uploads/TCG_TPM2_r1p59_Part1_Architecture_pub.pdf
 
 informative:
   MFSA201473:
@@ -71,6 +88,15 @@ CertificateVerify messages in favor of RSASSA-PSS. While RSASSA-PSS is a
 long-established signature algorithm, some legacy hardware cryptographic devices
 lack support for it. While uncommon in TLS servers, these devices are sometimes
 used by TLS clients for client certificates.
+
+For example, Trusted Platform Modules (TPMs) are ubiquitous hardware
+cryptographic devices that are often used to protect TLS client certificate
+private keys. However, a large number of TPMs are unable to produce RSASSA-PSS
+signatures compatible with TLS 1.3. TPM specifications prior to 2.0 did not
+define RSASSA-PSS support (see Section 5.8.1 of {{TPM12}}). TPM 2.0
+includes RSASSA-PSS, but only those TPM 2.0 devices compatible with FIPS 186-4
+can be relied upon to use the salt length matching the digest length, as
+required for compatibility with TLS 1.3 (see Appendix B.7 of {{TPM2}}).
 
 TLS connections that rely on such devices cannot migrate to TLS 1.3. Staying on
 TLS 1.2 leaks the client certificate to network attackers and additionally
