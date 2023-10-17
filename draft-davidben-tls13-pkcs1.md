@@ -1,7 +1,7 @@
 ---
 title: "Legacy RSASSA-PKCS1-v1_5 codepoints for TLS 1.3"
 abbrev: "Legacy PKCS#1 codepoints for TLS 1.3"
-category: exp
+category: std
 
 docname: draft-davidben-tls13-pkcs1-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
@@ -9,13 +9,13 @@ number:
 date:
 consensus: true
 v: 3
-# area: AREA
-# workgroup: WG Working Group
+area: "Security"
+workgroup: "Transport Layer Security"
 venue:
-#  group: WG
-#  type: Working Group
-#  mail: WG@example.com
-#  arch: https://example.com/WG
+  group: "Transport Layer Security"
+  type: "Working Group"
+  mail: "tls@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/tls/"
   github: "davidben/tls13-pkcs1"
   latest: "https://davidben.github.io/tls13-pkcs1/draft-davidben-tls13-pkcs1.html"
 
