@@ -3,7 +3,7 @@ title: "Legacy RSASSA-PKCS1-v1_5 codepoints for TLS 1.3"
 abbrev: "Legacy PKCS#1 codepoints for TLS 1.3"
 category: std
 
-docname: draft-tls-tls13-pkcs1-latest
+docname: draft-ietf-tls-tls13-pkcs1-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
