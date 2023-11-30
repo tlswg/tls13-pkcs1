@@ -17,7 +17,7 @@ venue:
   mail: "tls@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/tls/"
   github: "davidben/tls13-pkcs1"
-  latest: "https://davidben.github.io/tls13-pkcs1/draft-tls-tls13-pkcs1.html"
+  latest: "https://davidben.github.io/tls13-pkcs1/draft-ietf-tls-tls13-pkcs1.html"
 
 author:
  -
