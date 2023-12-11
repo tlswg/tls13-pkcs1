@@ -2,16 +2,16 @@
 
 This is the working area for the IETF [TLS Working Group](https://datatracker.ietf.org/wg/tls/documents/) Internet-Draft, "Legacy RSASSA-PKCS1-v1_5 codepoints for TLS 1.3".
 
-* [Editor's Copy](https://davidben.github.io/tls13-pkcs1/#go.draft-ietf-tls-tls13-pkcs1.html)
+* [Editor's Copy](https://tlswg.github.io/tls13-pkcs1/#go.draft-ietf-tls-tls13-pkcs1.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-tls-tls13-pkcs1)
 * [Working Group Draft](https://datatracker.ietf.org/doc/html/draft-ietf-tls-tls13-pkcs1)
-* [Compare Editor's Copy to Working Group Draft](https://davidben.github.io/tls13-pkcs1/#go.draft-ietf-tls-tls13-pkcs1.diff)
+* [Compare Editor's Copy to Working Group Draft](https://tlswg.github.io/tls13-pkcs1/#go.draft-ietf-tls-tls13-pkcs1.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/davidben/tls13-pkcs1/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/tlswg/tls13-pkcs1/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
