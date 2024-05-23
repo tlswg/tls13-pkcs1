@@ -12,23 +12,23 @@
 client certificates in TLS 1.3. This removes an obstacle for some deployments
 to migrate to TLS 1.3. 
     " name="description">
-<meta content="xml2rfc 3.18.2" name="generator">
+<meta content="xml2rfc 3.21.0" name="generator">
 <meta content="draft-ietf-tls-tls13-pkcs1-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.18.2
-    Python 3.11.6
-    ConfigArgParse 1.5.3
+  xml2rfc 3.21.0
+    Python 3.11.9
+    ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.0.0
+    platformdirs 4.2.1
     pycountry 22.3.5
-    PyYAML 6.0
+    PyYAML 6.0.1
     requests 2.31.0
-    setuptools 67.7.2
+    setuptools 68.2.2
     six 1.16.0
-    wcwidth 0.2.10
+    wcwidth 0.2.13
 -->
 <link href="draft-ietf-tls-tls13-pkcs1.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1027,11 +1027,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Legacy PKCS#1 codepoints for TLS 1.3</td>
-<td class="right">November 2023</td>
+<td class="right">May 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Benjamin &amp; Popov</td>
-<td class="center">Expires 2 June 2024</td>
+<td class="center">Expires 24 November 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1044,12 +1044,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-tls-tls13-pkcs1-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-11-30" class="published">30 November 2023</time>
+<time datetime="2024-05-23" class="published">23 May 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-06-02">2 June 2024</time></dd>
+<dd class="expires"><time datetime="2024-11-24">24 November 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1076,7 +1076,7 @@ to migrate to TLS 1.3.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
       </h2>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
-        The latest revision of this draft can be found at <span><a href="https://davidben.github.io/tls13-pkcs1/draft-ietf-tls-tls13-pkcs1.html">https://davidben.github.io/tls13-pkcs1/draft-ietf-tls-tls13-pkcs1.html</a></span>.
+        The latest revision of this draft can be found at <span><a href="https://tlswg.github.io/tls13-pkcs1/draft-ietf-tls-tls13-pkcs1.html">https://tlswg.github.io/tls13-pkcs1/draft-ietf-tls-tls13-pkcs1.html</a></span>.
         Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-ietf-tls-tls13-pkcs1/">https://datatracker.ietf.org/doc/draft-ietf-tls-tls13-pkcs1/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
 <p id="section-note.1-3">
         Discussion of this document takes place on the
@@ -1084,7 +1084,7 @@ to migrate to TLS 1.3.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/tls/">https://mailarchive.ietf.org/arch/browse/tls/</a></span>.
         Subscribe at <span><a href="https://www.ietf.org/mailman/listinfo/tls/">https://www.ietf.org/mailman/listinfo/tls/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 <p id="section-note.1-4">Source for this draft and an issue tracker can be found at
-        <span><a href="https://github.com/davidben/tls13-pkcs1">https://github.com/davidben/tls13-pkcs1</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
+        <span><a href="https://github.com/tlswg/tls13-pkcs1">https://github.com/tlswg/tls13-pkcs1</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1105,7 +1105,7 @@ to migrate to TLS 1.3.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 June 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1114,7 +1114,7 @@ to migrate to TLS 1.3.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2023 IETF Trust and the persons identified as the
+            Copyright (c) 2024 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1377,7 +1377,7 @@ should be set to "N", and the "Reference" column should be set to this document.
 <dl class="references">
 <dt id="I-D.ietf-tls-hybrid-design">[I-D.ietf-tls-hybrid-design]</dt>
         <dd>
-<span class="refAuthor">Stebila, D.</span>, <span class="refAuthor">Fluhrer, S.</span>, and <span class="refAuthor">S. Gueron</span>, <span class="refTitle">"Hybrid key exchange in TLS 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-hybrid-design-09</span>, <time datetime="2023-09-07" class="refDate">7 September 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design-09">https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design-09</a>&gt;</span>. </dd>
+<span class="refAuthor">Stebila, D.</span>, <span class="refAuthor">Fluhrer, S.</span>, and <span class="refAuthor">S. Gueron</span>, <span class="refTitle">"Hybrid key exchange in TLS 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-hybrid-design-10</span>, <time datetime="2024-04-05" class="refDate">5 April 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design-10">https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design-10</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="MFSA201473">[MFSA201473]</dt>
         <dd>
