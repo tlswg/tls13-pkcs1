@@ -151,7 +151,8 @@ points if not offered in the CertificateRequest message.
 
 Clients with such legacy keys MAY negotiate the use of these signature
 algorithms if offered by the server.  Clients SHOULD NOT negotiate them with
-keys that support RSASSA-PSS.
+keys that support RSASSA-PSS, though this may not be practical to determine in
+all applications.
 
 TLS implementations SHOULD disable these code points by default. See
 {{security}}.
