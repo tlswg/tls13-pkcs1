@@ -153,7 +153,8 @@ Clients with such legacy keys MAY negotiate the use of these signature
 algorithms if offered by the server.  Clients SHOULD NOT negotiate them with
 keys that support RSASSA-PSS.
 
-TLS implementations SHOULD disable these code points by default.
+TLS implementations SHOULD disable these code points by default. See
+{{security}}.
 
 
 # Security Considerations
