@@ -155,7 +155,7 @@ keys that support RSASSA-PSS, though this may not be practical to determine in
 all applications.
 
 TLS implementations SHOULD disable these code points by default. See
-{{security}}.
+{{security-considerations}}.
 
 
 # Security Considerations
