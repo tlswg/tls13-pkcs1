@@ -5,8 +5,8 @@
 Transport Layer Security                                     D. Benjamin
 Internet-Draft                                                Google LLC
 Intended status: Standards Track                                A. Popov
-Expires: 13 March 2026                                   Microsoft Corp.
-                                                        9 September 2025
+Expires: 14 March 2026                                   Microsoft Corp.
+                                                       10 September 2025
 
 
             Legacy RSASSA-PKCS1-v1_5 codepoints for TLS 1.3
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 March 2026.
+   This Internet-Draft will expire on 14 March 2026.
 
 Copyright Notice
 
@@ -154,7 +154,9 @@ Table of Contents
    Clients with such legacy keys MAY negotiate the use of these
    signature algorithms if offered by the server.  Clients SHOULD NOT
    negotiate them with keys that support RSASSA-PSS, though this may not
-   be practical to determine in all applications.
+   be practical to determine in all applications.  For example,
+   attempting to test a key for support might display a message to the
+   user or have other side effects.
 
    TLS implementations SHOULD disable these code points by default.  See
    Section 4.
