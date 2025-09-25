@@ -70,7 +70,7 @@ informative:
       name: "Bodo Moeller"
     date: 2014-10-14
     target: https://security.googleblog.com/2014/10/this-poodle-bites-exploiting-ssl-30.html
-
+...
 
 
 --- abstract
@@ -99,18 +99,28 @@ can be relied upon to use the salt length matching the digest length, as
 required for compatibility with TLS 1.3 (see Appendix B.7 of {{TPM2}}).
 
 TLS connections that rely on such devices cannot migrate to TLS 1.3. Staying on
-TLS 1.2 leaks the client certificate to network attackers and additionally
-prevents such deployments from protecting traffic against retroactive
-decryption by an attacker with a quantum computer.
+TLS 1.2 leaks the client certificate to network attackers
+{{?PRIVACY=DOI.10.23919/TMA.2017.8002897}} and additionally prevents such
+deployments from protecting traffic against retroactive decryption by an
+attacker with a quantum computer {{?I-D.ietf-tls-hybrid-design}}.
 
-Moreover, TLS negotiates the protocol version before client certificates, so
-clients and servers cannot smoothly transition unaffected connections to
-TLS 1.3. As a result, this issue is not limited to individual connections
-that use affected devices. It prevents entire deployments from migrating to
-TLS 1.3. See {{security-considerations}} for further discussion.
+Additionally, TLS negotiates protocol versions before client certificates.
+Clients send ClientHellos without knowing whether the server will request to
+authenticate with legacy keys. Conversely, servers respond with a TLS
+version and CertificateRequest without knowing if the client will then
+respond with a legacy key. If the client and server, respectively, offer and
+negotiate TLS 1.3, the connection will fail due to the legacy key, when it
+previously succeeded at TLS 1.2.
+
+To recover from this failure, one side must globally disable TLS 1.3 or the
+client must implement an external fallback. Disabling TLS 1.3 impacts
+connections that would otherwise be unaffected by this issue, while external
+fallbacks break TLS's security analysis and may introduce vulnerabilities
+{{POODLE}}.
 
 This document allocates code points to use these legacy keys with client
-certificates in TLS 1.3.
+certificates in TLS 1.3. This reduces the pressure on implementations to select
+one of these problematic mitigations and unblocks TLS 1.3 deployment.
 
 # Conventions and Definitions
 
@@ -161,39 +171,13 @@ TLS implementations SHOULD disable these code points by default. See
 
 # Security Considerations
 
-Prior to this document, legacy RSA keys would prevent client certificate
-deployments from adopting TLS 1.3. The new code points allow such deployments
-to upgrade without replacing the keys. TLS 1.3 fixes a privacy flaw
-{{?PRIVACY=DOI.10.23919/TMA.2017.8002897}} with client certificates, so
-upgrading is a particular benefit to these deployments. TLS 1.3 is also a
-prequisite for post-quantum key exchanges {{?I-D.ietf-tls-hybrid-design}},
-necessary for deployments to protect traffic against retroactive decryption by
-an attacker with a quantum computer.
+The considerations in {{introduction}} do not apply to server keys, so these new
+code points are forbidden for use with server certificates. RSASSA-PSS continues
+to be required for TLS 1.3 servers using RSA keys. This minimizes the impact to
+only those cases necessary to unblock TLS 1.3 deployment.
 
-Additionally, TLS negotiates protocol versions before client certificates.
-Clients send ClientHellos without knowing whether the server will request to
-authenticate with legacy keys. Conversely, servers respond with a TLS
-version and CertificateRequest without knowing if the client will then
-respond with a legacy key. If the client and server, respectively, offer and
-negotiate TLS 1.3, the connection will fail due to the legacy key, when it
-previously succeeded at TLS 1.2.
-
-To recover from this failure, one side must globally disable TLS 1.3 or the
-client must implement an external fallback. Disabling TLS 1.3 impacts
-connections that would otherwise be unaffected by this issue, while external
-fallbacks break TLS's security analysis and may introduce vulnerabilities
-{{POODLE}}. The new code points reduce the pressure on implementations to select
-one of these problematic mitigations and unblocks TLS 1.3 deployment.
-
-At the same time, the new code points also reduce the pressure on
-implementations to migrate to RSASSA-PSS. The above considerations do not apply
-to server keys, so these new code points are forbidden for use with server
-certificates. RSASSA-PSS continues to be required for TLS 1.3 servers using RSA
-keys. This minimizes the impact to only those cases necessary to unblock TLS
-1.3 deployment.
-
-Finally, when implemented incorrectly, RSASSA-PKCS1-v1\_5 admits signature
-forgeries {{MFSA201473}}. Implementations  producing or verifying signatures
+When implemented incorrectly, RSASSA-PKCS1-v1\_5 admits signature
+forgeries {{MFSA201473}}. Implementations producing or verifying signatures
 with these algorithms MUST implement RSASSA-PKCS1-v1\_5 as specified in section
 8.2 of {{RFC8017}}. In particular, clients MUST include the mandatory NULL
 parameter in the DigestInfo structure and produce a valid DER {{X690}}
