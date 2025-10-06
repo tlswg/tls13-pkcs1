@@ -198,3 +198,8 @@ should be set to "N", and the "Reference" column should be set to this document.
 
 
 --- back
+
+# Acknowledgements
+{:numbered="false"}
+
+Thanks to Rifaat Shekh-Yusef, Martin Thomson, and Paul Wouters for providing feedback on this document.
