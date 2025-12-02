@@ -94,8 +94,8 @@ cryptographic devices that are often used to protect TLS client certificate
 private keys. However, a large number of TPMs are unable to produce RSASSA-PSS
 signatures compatible with TLS 1.3. TPM specifications prior to 2.0 did not
 define RSASSA-PSS support (see Section 5.8.1 of {{TPM12}}). TPM 2.0
-includes RSASSA-PSS, but only those TPM 2.0 devices compatible with FIPS 186-4
-can be relied upon to use the salt length matching the digest length, as
+includes RSASSA-PSS, but only those TPM 2.0 devices compatible with US FIPS
+186-4 can be relied upon to use the salt length matching the digest length, as
 required for compatibility with TLS 1.3 (see Appendix B.7 of {{TPM2}}).
 
 TLS connections that rely on such devices cannot migrate to TLS 1.3. Staying on
@@ -187,7 +187,7 @@ encoding. Servers MUST reject signatures which do not meet these requirements.
 # IANA Considerations
 
 IANA is requested to create the following entries in the
-TLS SignatureScheme registry, defined in {{!RFC8446}}. The "Recommended" column
+TLS SignatureScheme registry. The "Recommended" column
 should be set to "N", and the "Reference" column should be set to this document.
 
 | Value  |  Description                       |
